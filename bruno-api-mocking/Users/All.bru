@@ -1,0 +1,15 @@
+meta {
+  name: All
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{URL}}/users?role=ADMIN
+  body: none
+  auth: none
+}
+
+query {
+  role: ADMIN
+}
