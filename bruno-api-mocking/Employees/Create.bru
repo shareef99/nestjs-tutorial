@@ -1,0 +1,19 @@
+meta {
+  name: Create
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/employees
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Nadeem Shareef",
+    "email": "",
+    "role": "ADMIN"
+  }
+}
