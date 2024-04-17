@@ -18,7 +18,7 @@ import { MyLoggerService } from "src/my-logger/my-logger.service";
 @Controller("employees")
 export class EmployeesController {
   constructor(private readonly employeesService: EmployeesService) {}
-  private readonly logger = new MyLoggerService();
+  private readonly logger = new MyLoggerService(EmployeesController.name);
 
   @Post()
   create(@Body() createEmployeeDto: Prisma.EmployeeCreateInput) {
@@ -28,7 +28,10 @@ export class EmployeesController {
   @SkipThrottle({ default: false })
   @Get()
   findAll(@Ip() ip: string, @Query("role") role?: "ADMIN" | "INTERN") {
-    this.logger.log(`Request for all employees\t${ip}`);
+    this.logger.log(
+      `Request for all employees\t${ip}`,
+      EmployeesController.name,
+    );
     return this.employeesService.findAll(role);
   }
 
